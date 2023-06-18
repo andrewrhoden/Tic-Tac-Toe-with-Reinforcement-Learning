@@ -108,4 +108,15 @@ class TicTacToeGame(object):
                 self.text_box.value = "Os Turn"
 
 
+def check_win(board):
+    v = board.sum(axis=0)
+    h = board.sum(axis=1)
+    dd = board[0, 0] + board[1, 1] + board[2, 2]
+    du = board[2, 0] + board[1, 1] + board[0, 2]
 
+    if max(v.max(), h.max()) == 3 or dd == 3 or du == 3:
+        return 1
+    elif min(v.min(), h.min()) == -3 or dd == -3 or du == -3:
+        return -1
+    else:
+        return 0
